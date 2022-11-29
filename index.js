@@ -13,7 +13,7 @@ const nodemailer = require("nodemailer");
 
 app.use(
   cors({
-    orgin:"https://stunning-mandazi-8adbbb.netlify.app/"  //"http://localhost:3000",
+    orgin:"https://stunning-mandazi-8adbbb.netlify.app"  //"http://localhost:3000",
   })
 );
 
