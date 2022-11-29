@@ -21,14 +21,6 @@ app.use(express.json());
 
 let account = [];
 
-// var sender = nodemailer.createTransport({
-//   service:"gmail",
-//   auth:{
-//     user:'kalanjiyaraj01@gmail.com',
-//     pass:'Jaram1991'
-//   }
-//  });
-
 app.post("/user/register", async (req, res) => {
   try {
     const connection = await mongoclient.connect(URL);
@@ -73,41 +65,5 @@ app.post("/login", async (req, res) => {
     res.status(400).json({ message: "Something went wrong" });
   }
 });
-
-// app.post("/forgot", async (req, res) => {
-//   try {
-//     const connection = await mongoclient.connect(URL);
-//     const db = connection.db("password_rest_flow");
-
-//     const user = await db
-//       .collection("users")
-//       .findOne({ email: req.body.email });
-//       await connection.close();
-//     if (user) {
-   
-
-//      var composemail = {
-//       from : 'kalanjiyaraj01@gmail.com',
-//       to: "rajepicfive@gmail.com",
-//       subject:'send mail using node.js',
-//       text:"www.google.com"
-// }
-
-// sender.sendMail(composemail,function(error,info){
-//   if(error)
-//   {
-//     console.log("Error"+error);
-//   }else{
-//     console.log("mail sent successfully" + info.response);
-//   }
-// })
-
-//     }else{
-//       res.json({ message: "username or password incorrect" });
-//     }
-//   } catch (error) {
-//     res.status(400).json({ message: "Something went wrong" });
-//   }
-// });
 
 app.listen(process.env.PORT || 3003);
