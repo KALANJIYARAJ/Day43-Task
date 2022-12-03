@@ -15,7 +15,7 @@ const PASSWORD = process.env.PASSWORD ;
 
 app.use(
   cors({
-    orgin:"https://stunning-mandazi-8adbbb.netlify.app"  //"http://localhost:3000",
+    orgin:"https://stunning-mandazi-8adbbb.netlify.app"
   })
 );
 
@@ -93,7 +93,7 @@ app.post("/forgot", async (req, res) => {
       to: user.email,
       subject: "Rest Password",
       text: "Hi Raj",
-      html: `<h1>Hiii ${user.name} <a href="http://localhost:3000/reset/${user._id}">please click the link and reset your password</a> </h1>`,
+      html: `<h1>Hiii ${user.name} <a href="https://stunning-mandazi-8adbbb.netlify.app/reset/${user._id}">please click the link and reset your password</a> </h1>`,
     };
     transporter.sendMail(mailOptions, function (error, response) {
       if (error) {
