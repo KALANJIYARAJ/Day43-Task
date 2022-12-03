@@ -71,12 +71,14 @@ app.post("/login", async (req, res) => {
 app.post("/forgot", async (req, res) => {
   try {
     const connection = await mongoclient.connect(URL);
-    const db = connection.db("pizza_application");
+    const db = connection.db("password_rest_flow");
 
     const user = await db
       .collection("users")
       .findOne({ email: req.body.email });
     await connection.close();
+
+    if(user){
 
     var transporter = nodemailer.createTransport({
       service: "gmail",
@@ -102,6 +104,7 @@ app.post("/forgot", async (req, res) => {
       }
       transporter.close();  
     });
+  }
   
       res.json({message:"Message sent"});
    
@@ -113,7 +116,7 @@ app.post("/forgot", async (req, res) => {
 app.post("/reset/:userId", async (req, res) => {
   try {
     const connection = await mongoclient.connect(URL);
-    const db = connection.db("pizza_application");
+    const db = connection.db("password_rest_flow");
 
     var salt = await bcrypt.genSalt(10);
     var hash = await bcrypt.hash(req.body.password, salt);
